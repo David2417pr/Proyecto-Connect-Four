@@ -1,4 +1,5 @@
 
+// Luis D. Figueroa Olmo
 #include <iostream>
 using namespace  std;
 
@@ -9,8 +10,8 @@ int main()
 
 
 cout << "\n";
-for (int x = 10; x > -10; x -=2 )
-    if (x == -8)
+for (int x = 10; x >= -10; x -=2 )
+    if (x == -10)
     cout << x;
     else
     cout << x << ",";
