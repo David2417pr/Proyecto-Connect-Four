@@ -27,9 +27,13 @@ for (int number = 1; number <= 22; number+= 3)
 
 for (int mult3 = 1; mult3 <= 27; mult3 *= 3)
     cout << mult3;
-    
 
+cout << "\n";
 
+for (char abcd = 'A'; abcd <= 'Z'; abcd ++)
+    cout << abcd;
+
+cout << "\n";
 return 0;
 
 }
