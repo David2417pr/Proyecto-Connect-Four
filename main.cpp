@@ -5,8 +5,9 @@ using namespace  std;
 int main()
 {
 
-int x;
-int number;
+
+
+
 cout << "\n";
 for (int x = 10; x > -10; x -=2 )
     if (x == -8)
@@ -21,7 +22,14 @@ for (int number = 1; number <= 22; number+= 3)
     else
     cout << number << ",";
  cout << endl;   
- cout << "\n" << endl;       
+ cout << "\n" << endl;  
 
-    return 0;
+
+for (int mult3 = 1; mult3 <= 27; mult3 *= 3)
+    cout << mult3;
+    
+
+
+return 0;
+
 }
