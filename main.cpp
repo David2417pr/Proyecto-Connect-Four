@@ -1,5 +1,3 @@
-
-// Luis D. Figueroa Olmo
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -10,27 +8,10 @@ const int rows = 6;
 
 
 
-
-/*void arraysum(const int arr[][COLS], int rows) {
-
-
-for(int i = 0; i < rows; i++){
-    for(int j = 0; j < COLS; j++){
-        if (j == 0)
-        total +=  arr[i][j];
-        else 
-        total2 += arr[i][j];
-
-
-    }
- 
-
- }
+void DisplayBoard(string [][COLS],int rows);
 
 
 
-return ;
-}*/
 
 int main()
 {
@@ -44,13 +25,10 @@ string Gamearray[rows][COLS] =    {   {"- ", "- ", "- ", "- ", "- ", "- ", "- "}
                                 { "- ", "- ", "- ", "- ", "- ", "- ", "- "}};
 
 
-//arraysum(hours, rows);
+DisplayBoard(Gamearray, rows);
 
-for(int i = 0; i < rows; i++){
-    cout << "\n";
-    for(int j = 0; j < COLS; j++)
-        cout << Gamearray[i][j];
-}
+
+
 
 
 return 0;
@@ -58,5 +36,11 @@ return 0;
 }
 
 
+void DisplayBoard(string Gamearr[][COLS], int rows){
+for(int i = 0; i < rows; i++){
+    cout << "\n";
+    for(int j = 0; j < COLS; j++)
+        cout << Gamearr[i][j];
 
+}}
 
