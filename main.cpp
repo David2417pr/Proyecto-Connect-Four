@@ -4,11 +4,11 @@
 using namespace  std;
 
 const int COLS = 7;
-const int rows = 6;
+const int ROWS = 6;
 
 
 
-void DisplayBoard(string [][COLS],int rows);
+void DisplayBoard(string [][COLS],int ROWS);
 
 
 
@@ -17,15 +17,15 @@ int main()
 {
 
 
-string Gamearray[rows][COLS] =    {   {"- ", "- ", "- ", "- ", "- ", "- ", "- "}, 
-                                {"- ", "- ", "- ", "- ", "- ", "- ", "- "}, 
-                                {"- ", "- ", "- ", "- ", "- ", "- ", "- "},
-                                { "- ", "- ", "- ", "- ", "- ", "- ", "- "},
-                                { "- ", "- ", "- ", "- ", "- ", "- ", "- "},
-                                { "- ", "- ", "- ", "- ", "- ", "- ", "- "}};
+string Gamearray[ROWS][COLS] =    {{" - ", " - ", " - ", " - ", " - ", " - ", " - "}, 
+                                {" - ", " - ", " - ", " - ", " - ", " - ", " - "}, 
+                                {" - ", " - ", " - ", " - ", " - ", " - ", " - "},
+                                { " - ", " - ", " - ", " - ", " - ", " - ", " - "},
+                                { " - ", " - ", " - ", " - ", " - ", " - ", " - "},
+                                { " - ", " - ", " - ", " - ", " - ", " - ", " - "}};
 
 
-DisplayBoard(Gamearray, rows);
+DisplayBoard(Gamearray, ROWS);
 
 
 
@@ -36,11 +36,13 @@ return 0;
 }
 
 
-void DisplayBoard(string Gamearr[][COLS], int rows){
-for(int i = 0; i < rows; i++){
+void DisplayBoard(string Gamearr[][COLS], int ROWS){
+cout << " 1   2   3   4   5   6   7";
+for(int i = 0; i < ROWS; i++){
     cout << "\n";
-    for(int j = 0; j < COLS; j++)
-        cout << Gamearr[i][j];
+    for(int j = 0; j < COLS; j++){
 
+        cout << Gamearr[i][j] << "|";
+    }
 }}
 
