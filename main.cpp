@@ -2,15 +2,16 @@
 // Luis D. Figueroa Olmo
 #include <iostream>
 #include <iomanip>
+#include <string>
 using namespace  std;
 
-const int COLS = 2;
-const int rows = 3;
-
-int total = 0, total2 = 0;
+const int COLS = 7;
+const int rows = 6;
 
 
-void arraysum(const int arr[][COLS], int rows) {
+
+
+/*void arraysum(const int arr[][COLS], int rows) {
 
 
 for(int i = 0; i < rows; i++){
@@ -29,18 +30,27 @@ for(int i = 0; i < rows; i++){
 
 
 return ;
-}
+}*/
 
 int main()
 {
 
 
-int hours[rows][COLS] =     {{8, 5}, 
-                            {7,9}, 
-                            {6,3}};
-arraysum(hours, rows);
+string hours[rows][COLS] =    {   {"- ", "- ", "- ", "- ", "- ", "- ", "- "}, 
+                                {"- ", "- ", "- ", "- ", "- ", "- ", "- "}, 
+                                {"- ", "- ", "- ", "- ", "- ", "- ", "- "},
+                                { "- ", "- ", "- ", "- ", "- ", "- ", "- "},
+                                { "- ", "- ", "- ", "- ", "- ", "- ", "- "},
+                                { "- ", "- ", "- ", "- ", "- ", "- ", "- "}};
 
-cout << total << " " << total2 << " ";
+
+//arraysum(hours, rows);
+
+for(int i = 0; i < rows; i++){
+    cout << "\n";
+    for(int j = 0; j < COLS; j++)
+        cout << hours[i][j];
+}
 
 
 return 0;
