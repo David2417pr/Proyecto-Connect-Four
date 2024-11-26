@@ -9,7 +9,7 @@ const int ROWS = 6;
 
 
 void DisplayBoard(string [][COLS],int ROWS);
-
+void Token(string [][COLS],int ROWS);
 
 
 
@@ -26,7 +26,7 @@ string Gamearray[ROWS][COLS] =    {{" - ", " - ", " - ", " - ", " - ", " - ", " 
 
 
 DisplayBoard(Gamearray, ROWS);
-
+Token(Gamearray, ROWS);
 
 
 
@@ -46,3 +46,13 @@ for(int i = 0; i < ROWS; i++){
     }
 }}
 
+void Token(string Tok[][COLS],int ROWS){
+int Column;
+cout << "Entra columna (1-7): ";
+cin >> Column;
+while(Column < 1 || Column > 7){
+    cout << "Entra columna (1-7): ";
+    cin >> Column;   
+
+}
+}
