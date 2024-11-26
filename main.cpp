@@ -36,7 +36,7 @@ int main()
 {
 
 
-string hours[rows][COLS] =    {   {"- ", "- ", "- ", "- ", "- ", "- ", "- "}, 
+string Gamearray[rows][COLS] =    {   {"- ", "- ", "- ", "- ", "- ", "- ", "- "}, 
                                 {"- ", "- ", "- ", "- ", "- ", "- ", "- "}, 
                                 {"- ", "- ", "- ", "- ", "- ", "- ", "- "},
                                 { "- ", "- ", "- ", "- ", "- ", "- ", "- "},
@@ -49,7 +49,7 @@ string hours[rows][COLS] =    {   {"- ", "- ", "- ", "- ", "- ", "- ", "- "},
 for(int i = 0; i < rows; i++){
     cout << "\n";
     for(int j = 0; j < COLS; j++)
-        cout << hours[i][j];
+        cout << Gamearray[i][j];
 }
 
 
