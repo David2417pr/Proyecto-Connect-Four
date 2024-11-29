@@ -57,17 +57,19 @@ for(int i = 0; i < ROWS; i++){
 void Token(string Tok[][COLS],int ROWS, string Player){
 int Column, decrement = 1;
 bool lleno = true;
+//Input del Usuario y verificar si esta lleno
 
-cout << decrement;
-cout << "Jugador " << Player;
+cout << " Jugador " << Player;
 cout << "Entra columna (1-7): ";
-while(Column < 1 || Column > 7 || lleno == true){
-    if( Column > 1 && Column < 10 && lleno == true){
-    cout << "La columna que has ingresado esta llena. Entre otra columna.";
-    cin >> Column;}
-    else{
-    cout << "Entra columna (1-7): ";
-    cin >> Column; }  
+cin >> Column;
+while(Column < 1 || Column > 7){
+    cout << "Las columnas son de 1 a 7: ";
+    cin >> Column;    
+  
+}
+
+
+// Si da falso(Da falso es porque hay un espacio vacio), sale del ciclo while 
 
 for(int i = 1; i <= ROWS; i++){
     if (Tok[ROWS-i][Column-1]== Player1 || Tok[ROWS-i][Column-1]== Player2)
@@ -75,31 +77,47 @@ for(int i = 1; i <= ROWS; i++){
     else {
     lleno = false;
     break;}
+}
+
+while(lleno == true){
+    cout << "La columna que has ingresado esta llena. Entre otra columna.";
+    cin >> Column;
+    for(int i = 1; i <= ROWS; i++){
+    if (Tok[ROWS-i][Column-1]== Player1 || Tok[ROWS-i][Column-1]== Player2)
+    lleno = true;
+    else {
+    lleno = false;
+    break;}
 }}
+    
+
+//Encontrar el espacio vacio
 
 while(Tok[ROWS-decrement][Column-1] == Player1 || Tok[ROWS-decrement][Column-1] == Player2){
     decrement++;    
 }
 Tok[ROWS-decrement][Column-1] = Player;
 
-
-
 }
+
+
 
 void Token2(string Tok[][COLS],int ROWS, string Player){
 int Column, decrement = 1;
 bool lleno = true;
+//Input del Usuario y verificar si esta lleno
 
 cout << " Jugador " << Player;
 cout << "Entra columna (1-7): ";
-while(Column < 1 || Column > 7 || lleno == true){
-    if( Column > 1 && Column < 10 && lleno == true){
-    cout << "La columna que has ingresado esta llena. Entre otra columna.";
-    cin >> Column;}
-    else{
-    cout << "Entra columna (1-7): ";
-    cin >> Column; }   
- 
+cin >> Column;
+while(Column < 1 || Column > 7){
+    cout << "Las columnas son de 1 a 7: ";
+    cin >> Column;    
+  
+}
+
+
+// Si da falso(Da falso es porque hay un espacio vacio), sale del ciclo while 
 
 for(int i = 1; i <= ROWS; i++){
     if (Tok[ROWS-i][Column-1]== Player1 || Tok[ROWS-i][Column-1]== Player2)
@@ -107,8 +125,21 @@ for(int i = 1; i <= ROWS; i++){
     else {
     lleno = false;
     break;}
-}}
+}
 
+while(lleno == true){
+    cout << "La columna que has ingresado esta llena. Entre otra columna.";
+    cin >> Column;
+    for(int i = 1; i <= ROWS; i++){
+    if (Tok[ROWS-i][Column-1]== Player1 || Tok[ROWS-i][Column-1]== Player2)
+    lleno = true;
+    else {
+    lleno = false;
+    break;}
+}}
+    
+
+//Encontrar el espacio vacio
 
 while(Tok[ROWS-decrement][Column-1] == Player1 || Tok[ROWS-decrement][Column-1] == Player2){
     decrement++;    
