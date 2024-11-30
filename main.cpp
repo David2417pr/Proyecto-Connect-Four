@@ -11,7 +11,7 @@ bool winner = false, Lleno2 = false;;
 void DisplayBoard(string [][COLS],int ROWS);
 void Token(string [][COLS],int ROWS,string);
 void PlayerinTurn(string, string);
-
+bool CheckColumnFull(string [][COLS], int ROWS, int );
 
 
 int main()
@@ -90,15 +90,7 @@ while(Column < 1 || Column > 7){
   
 }
 // Si da falso(Da falso es porque hay un espacio vacio), sale del ciclo while 
-
-for(int i = 1; i <= ROWS; i++){
-    if (Tok[ROWS-i][Column-1]== Player1 || Tok[ROWS-i][Column-1]== Player2)
-    Lleno = true;
-    
-    else {
-    Lleno = false;
-    break;}
-}
+Lleno = CheckColumnFull( Tok, ROWS, Column);
 
 //Si no hay espacio en row 0, empate
 
@@ -118,7 +110,7 @@ if(Lleno2 == true){
 }
 
 // Si da falso(Da falso es porque hay un espacio vacio), sale del ciclo while 
-
+// funcion LlenarEspacioVacio()
 while(Lleno == true){
     DisplayBoard(Tok, ROWS);
     cout << "La columna que has ingresado esta llena. Jugador" << Player << " Entre otra columna.";
@@ -151,3 +143,16 @@ void PlayerinTurn(string Player1, string Player2){
 
 }
 
+bool CheckColumnFull(string Tok[][COLS], int ROWS, int Column){
+
+bool Lleno;
+
+for(int i = 1; i <= ROWS; i++){
+    if (Tok[ROWS-i][Column-1]== Player1 || Tok[ROWS-i][Column-1]== Player2)
+    Lleno = true;
+    else {
+    Lleno = false;
+    break;}
+    }
+    return Lleno;
+    }
