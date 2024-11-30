@@ -38,12 +38,13 @@ do {
    switch(opcion){
     case 'a':
     case 'A': // Secuencia de el juego
-                if(winner == true){
+                if(winner == true || Lleno2 == true){
                 for(int i = 0; i < ROWS; i++)
                     for(int j = 0; j < COLS; j++){
                 Gamearray[i][j] = " - ";
                 }
-                winner = false;}
+                winner = false;
+                Lleno2 = false;}
                 while(winner == false && Lleno2 == false){
                 DisplayBoard(Gamearray, ROWS);
                 PlayerinTurn(Player1, Player2);
