@@ -44,7 +44,8 @@ do {
     case 'B': cout << "\n\t\tEl primero que conecte la misma letra horizontalmente, verticalmente o diagonalmente gana el juego.\n";
                 break;
     case 'c':
-    case 'C': return 0;}
+    case 'C': return 0;
+    default: cout << "\n\t\t****Opcion invalida!!!!! Ingrese opcion(A, B ó C)****\n";}
 }while(opcion != 'C' || opcion != 'c');
 
 }
