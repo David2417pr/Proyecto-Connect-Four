@@ -6,14 +6,14 @@ using namespace  std;
 const int COLS = 7;
 const int ROWS = 6;
 string Player1 = " X ", Player2 = " O ", Player;
-bool winner = false, Lleno2 = false;;
+bool winner = false, Draw = false;;
 
 void Play(string [][COLS],int ROWS);
 void DisplayBoard(string [][COLS],int ROWS);
 void Token(string [][COLS],int ROWS,string);
 void PlayerinTurn(string, string);
 bool CheckColumnFull(string [][COLS], int ROWS, int );
-
+bool CheckRow0Full (string [][COLS],int ROWS, int , bool );
 
 int main()
 {
@@ -41,7 +41,7 @@ do {
     case 'A':   Play(Gamearray, ROWS);
                 break;
     case 'b':
-    case 'B': cout << "\n\t\tEl primero que conecte la misma letra horizontalmente, verticalmente y/o diagonalmente, gana el juego.\n";
+    case 'B': cout << "\n\t\tEl primero que conecte la misma letra horizontalmente, verticalmente o diagonalmente gana el juego.\n";
                 break;
     case 'c':
     case 'C': return 0;}
@@ -50,14 +50,14 @@ do {
 }
 
 void Play(string Gamearray[][COLS],int ROWS){
-        if(winner == true || Lleno2 == true){
+        if(winner == true || Draw == true){
                 for(int i = 0; i < ROWS; i++)
                     for(int j = 0; j < COLS; j++){
                 Gamearray[i][j] = " - ";
                 }
                 winner = false;
-                Lleno2 = false;}
-                while(winner == false && Lleno2 == false){
+                Draw = false;}
+                while(winner == false && Draw == false){
                 DisplayBoard(Gamearray, ROWS);
                 PlayerinTurn(Player1, Player2);
                 Token(Gamearray, ROWS, Player);
@@ -68,7 +68,7 @@ void Play(string Gamearray[][COLS],int ROWS){
 
 
 void DisplayBoard(string Gamearr[][COLS], int ROWS){
-cout << " 1   2   3   4   5   6   7";
+cout << "\n 1   2   3   4   5   6   7";
 for(int i = 0; i < ROWS; i++){
     cout << "\n";
     for(int j = 0; j < COLS; j++){
@@ -83,24 +83,33 @@ int Column, decrement = 1;
 bool Lleno = true;
 //Input del Usuario y verificar si esta lleno
 cout << " Jugador " << Player;
-cout << "Entra columna (1-7)(-1): ";
-cin >> Column;
+cout << "Entra columna (1-7)(Para salir de el juego oprima '-1'): ";
 
+cin >> Column;
 if(Column == -1){
     winner = true;
     return;}
-
 while(Column < 1 || Column > 7){
+    DisplayBoard(Tok, ROWS);
     cout << "Las columnas son de 1 a 7: ";
-    cin >> Column;    
+    cout << " Jugador " << Player;
+    cout << "Entra columna (1-7)(Para salir de el juego oprima '-1'): ";
+    cin >> Column;
+    if(Column == -1){
+    winner = true;
+    return;}    
   
 }
 // Si da falso(Da falso es porque hay un espacio vacio), sale del ciclo while 
+
 Lleno = CheckColumnFull( Tok, ROWS, Column);
 
 //Si no hay espacio en row 0, empate
 
-if(Lleno == true){
+if(Lleno == true)
+CheckRow0Full (Tok, ROWS, Column, Lleno); 
+
+/*if(Lleno == true){
     for(int j = 0; j < COLS; j++){
             if(Tok[0][j] == Player1 || Tok[0][j] == Player2){
             Lleno2 = true;
@@ -109,28 +118,36 @@ if(Lleno == true){
             Lleno2 = false;
             break;}
     }
-}
-if(Lleno2 == true){
-    cout << "\n\t\tEmpate!\n\n";
+}*/
+if(Draw == true){
     return;
 }
 
 // Si da falso(Da falso es porque hay un espacio vacio), sale del ciclo while 
-// funcion LlenarEspacioVacio()
 while(Lleno == true){
     DisplayBoard(Tok, ROWS);
     cout << "La columna que has ingresado esta llena. Jugador" << Player << " Entre otra columna.";
     cin >> Column;
-    for(int i = 1; i <= ROWS; i++){
-    if (Tok[ROWS-i][Column-1]== Player1 || Tok[ROWS-i][Column-1]== Player2)
-    Lleno = true;
-    else {
-    Lleno = false;
-    break;}
-}}
+    if(Column == -1){
+    winner = true;
+    return;}
+
+while(Column < 1 || Column > 7){
+    DisplayBoard(Tok, ROWS);
+    cout << "Las columnas son de 1 a 7: ";
+    cout << " Jugador " << Player;
+    cout << "Entra columna (1-7)(Para salir de el juego oprima '-1'): ";
+    cin >> Column;    
+    if(Column == -1){
+    winner = true;
+    return;}
+}
+Lleno = CheckColumnFull( Tok, ROWS, Column);
+}
     
 
-//Encontrar el espacio vacio
+//Encontrar el espacio vacio y llenarlo
+// To do: funcion LlenarEspacioVacio()
 
 while(Tok[ROWS-decrement][Column-1] == Player1 || Tok[ROWS-decrement][Column-1] == Player2){
     decrement++;    
@@ -161,4 +178,25 @@ for(int i = 1; i <= ROWS; i++){
     break;}
     }
     return Lleno;
+    }
+
+bool CheckRow0Full (string Tok[][COLS],int ROWS, int Column, bool Lleno){
+    if(Lleno == true){
+        for(int j = 0; j < COLS; j++){
+                if(Tok[0][j] == Player1 || Tok[0][j] == Player2){
+                Draw = true;
+                }
+                else {
+                Draw = false;
+                break;}
+        }
+    }
+    if(Draw == true){
+        cout << "\n\t\tEmpate!\n\n";
+        return Lleno;
+    }
+    else {
+    Lleno = false;
+    return Lleno;
+    }
     }
