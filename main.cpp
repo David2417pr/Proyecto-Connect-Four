@@ -8,6 +8,7 @@ const int ROWS = 6;
 string Player1 = " X ", Player2 = " O ", Player;
 bool winner = false, Lleno2 = false;;
 
+void Play(string [][COLS],int ROWS);
 void DisplayBoard(string [][COLS],int ROWS);
 void Token(string [][COLS],int ROWS,string);
 void PlayerinTurn(string, string);
@@ -32,13 +33,24 @@ do {
    cout << "\n\t\tConnect Four!\n";
    cout << "\n\t\tA.) Jugar.";
    cout << "\n\t\tB.) Como jugar.";
-   cout << "\n\t\tC.) Salir";
+   cout << "\n\t\tC.) Salir.";
    cout << "\n\t\tOprima opcion: ";
    cin >> opcion;
    switch(opcion){
-    case 'a':
-    case 'A': // Secuencia de el juego
-                if(winner == true || Lleno2 == true){
+    case 'a':  // Secuencia de el juego
+    case 'A':   Play(Gamearray, ROWS);
+                break;
+    case 'b':
+    case 'B': cout << "\n\t\tEl primero que conecte la misma letra horizontalmente, verticalmente y/o diagonalmente, gana el juego.\n";
+                break;
+    case 'c':
+    case 'C': return 0;}
+}while(opcion != 'C' || opcion != 'c');
+
+}
+
+void Play(string Gamearray[][COLS],int ROWS){
+        if(winner == true || Lleno2 == true){
                 for(int i = 0; i < ROWS; i++)
                     for(int j = 0; j < COLS; j++){
                 Gamearray[i][j] = " - ";
@@ -51,13 +63,6 @@ do {
                 Token(Gamearray, ROWS, Player);
                 
                 }
-                break;
-    case 'b':
-    case 'B': cout << "\n\t\tEl primero que conecte la misma letra horizontalmente, verticalmente y/o diagonalmente, gana el juego.\n";
-                break;
-    case 'c':
-    case 'C': return 0;}
-}while(opcion != 'C' || opcion != 'c');
 
 }
 
