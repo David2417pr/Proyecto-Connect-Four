@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <limits>
 using namespace  std;
 
 const int COLS = 7;
@@ -92,6 +93,11 @@ if(Column == -1){
     return;}
 while(Column < 1 || Column > 7){
     DisplayBoard(Tok, ROWS);
+    if(cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        continue;
+    }
     cout << "Las columnas son de 1 a 7: ";
     cout << " Jugador " << Player;
     cout << "Entra columna (1-7)(Para salir de el juego oprima '-1'): ";
@@ -110,16 +116,7 @@ Lleno = CheckColumnFull( Tok, ROWS, Column);
 if(Lleno == true)
 CheckRow0Full (Tok, ROWS, Column, Lleno); 
 
-/*if(Lleno == true){
-    for(int j = 0; j < COLS; j++){
-            if(Tok[0][j] == Player1 || Tok[0][j] == Player2){
-            Lleno2 = true;
-            }
-            else {
-            Lleno2 = false;
-            break;}
-    }
-}*/
+
 if(Draw == true){
     return;
 }
@@ -129,6 +126,11 @@ while(Lleno == true){
     DisplayBoard(Tok, ROWS);
     cout << "La columna que has ingresado esta llena. Jugador" << Player << " Entre otra columna.";
     cin >> Column;
+        if(cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        continue;
+    }
     if(Column == -1){
     winner = true;
     return;}
@@ -139,6 +141,11 @@ while(Column < 1 || Column > 7){
     cout << " Jugador " << Player;
     cout << "Entra columna (1-7)(Para salir de el juego oprima '-1'): ";
     cin >> Column;    
+        if(cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        continue;
+    }
     if(Column == -1){
     winner = true;
     return;}
