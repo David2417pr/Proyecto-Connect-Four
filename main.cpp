@@ -212,27 +212,22 @@ bool CheckRow0Full (string Tok[][COLS],int ROWS, int Column, bool Lleno){
 
 void CheckWinH(string Tok[][COLS], int ROWS){
 for(int i = 0; i < ROWS; i++){
- int countx = 0, counto = 0;
-
     for(int j = 0; j < COLS; j++){
-        if(Tok[i][j] == " X ")
-        countx++;
-        else if(Tok[i][j] == " O ")
-        counto++;
-    if(countx == 4){
+      if(Tok[i][j] == Player1 && Tok[i][j+1] == Player1 && Tok[i][j+2] == Player1 && Tok[i][j+3] == Player1){
+        winner = true;
         Player = Player1;
-        winner = true;
         DisplayBoard(Tok, ROWS);
         cout <<"\n\n\t\t" <<  Player << " Wins!!";
         return;
     }
-    else if(counto == 4){
+    else if(Tok[i][j] == Player2 && Tok[i][j+1] == Player2 && Tok[i][j+2] == Player2 && Tok[i][j+3] == Player2){
+        winner = true;
         Player = Player2;
-        winner = true;
         DisplayBoard(Tok, ROWS);
         cout <<"\n\n\t\t" <<  Player << " Wins!!";
         return;
     }
+   
     }
 }
 
