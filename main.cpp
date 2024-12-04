@@ -15,7 +15,7 @@ void Token(string [][COLS],int ROWS,string);
 void PlayerinTurn(string, string);
 bool CheckColumnFull(string [][COLS], int ROWS, int );
 bool CheckRow0Full (string [][COLS],int ROWS, int , bool );
-
+void CheckWinH(string [][COLS], int);
 int main()
 {
 
@@ -31,7 +31,7 @@ string Gamearray[ROWS][COLS] =    {{" - ", " - ", " - ", " - ", " - ", " - ", " 
 
 do {
  
-   cout << "\n\t\tConnect Four!\n";
+   cout << "\n\n\t\tConnect Four!\n";
    cout << "\n\t\tA.) Jugar.";
    cout << "\n\t\tB.) Como jugar.";
    cout << "\n\t\tC.) Salir.";
@@ -63,7 +63,8 @@ void Play(string Gamearray[][COLS],int ROWS){
                 DisplayBoard(Gamearray, ROWS);
                 PlayerinTurn(Player1, Player2);
                 Token(Gamearray, ROWS, Player);
-                
+                CheckWinH(Gamearray, ROWS);
+
                 }
 
 }
@@ -207,4 +208,32 @@ bool CheckRow0Full (string Tok[][COLS],int ROWS, int Column, bool Lleno){
     Lleno = false;
     return Lleno;
     }
+    }
+
+void CheckWinH(string Tok[][COLS], int ROWS){
+for(int i = 0; i < ROWS; i++){
+ int countx = 0, counto = 0;
+
+    for(int j = 0; j < COLS; j++){
+        if(Tok[i][j] == " X ")
+        countx++;
+        else if(Tok[i][j] == " O ")
+        counto++;
+    if(countx == 4){
+        Player = Player1;
+        winner = true;
+        DisplayBoard(Tok, ROWS);
+        cout <<"\n\n\t\t" <<  Player << " Wins!!";
+        return;
+    }
+    else if(counto == 4){
+        Player = Player2;
+        winner = true;
+        DisplayBoard(Tok, ROWS);
+        cout <<"\n\n\t\t" <<  Player << " Wins!!";
+        return;
+    }
+    }
+}
+
     }
