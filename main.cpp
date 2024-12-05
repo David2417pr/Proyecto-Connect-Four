@@ -90,7 +90,8 @@ void Play(string Gamearray[][COLS],int ROWS){
  
 
 } 
-
+// Input: El arreglo de el juego, la cantidad de filas
+//Despliega el juego
 void DisplayBoard(string Gamearray[][COLS], int ROWS){ 
 
 cout << "\n 1   2   3   4   5   6   7"; 
@@ -101,7 +102,9 @@ for(int i = 0; i < ROWS; i++){
         cout << Gamearray[i][j] << "|";    
 }} 
 
-// COls = 7, Rows = 6 
+ 
+// Input: El arreglo de el juego, la cantidad de filas y el jugador en turno
+// Permite al usuario poner su ficha en el juego
 void Token(string Gamearray[][COLS],int ROWS, string Player){ 
 
 int Column, decrement = 1; 
@@ -112,6 +115,7 @@ bool Lleno = true;
 cout << " Jugador " << Player; 
 cout << "Entra columna (1-7)(Para salir de el juego oprima '-1'): "; 
 cin >> Column; 
+// Valor centinela para salir de el juego
 if(Column == -1){ 
     winner = true; 
     return;} 
@@ -134,18 +138,18 @@ while(Column < 1 || Column > 7){
     return;}     
 } 
 
-// Si da falso(Da falso es porque hay un espacio vacio), sale del ciclo while  
+// Input: Arreglo de el juego, la cantidad de filas de el arreglo y la columna que el usuario ha ingresado
+// Verifica si la columna en donde el usuario ha puesto la ficha esta llena.
+// Si da falso es porque hay un espacio vacio  
 Lleno = CheckColumnFull( Gamearray, ROWS, Column); 
 
-//Si no hay espacio en row 0, empate 
+// Si la columna esta llena se verifica si la primera fila esta llena
+// para asi decidir que hubo un empate 
 if(Lleno == true) 
 CheckRow0Full (Gamearray, ROWS, Column, Lleno);  
-
 if(Draw == true) 
-    return; 
- 
-// Si da falso(Da falso es porque hay un espacio vacio), sale del ciclo while  
-
+    return;   
+// Input validation para cuando el usuario ha puesto la ficha en una columna llena
 while(Lleno == true){ 
     DisplayBoard(Gamearray, ROWS); 
     cout << "La columna que has ingresado esta llena. Jugador" << Player << " Entre otra columna."; 
@@ -179,16 +183,16 @@ while(Column < 1 || Column > 7){
 Lleno = CheckColumnFull( Gamearray, ROWS, Column); 
 } 
 
-//Encontrar el espacio vacio y llenarlo 
-// To do: funcion LlenarEspacioVacio() 
+//Encontrar el espacio vacio y llenarlo  
 while(Gamearray[ROWS-decrement][Column-1] == Player1 || Gamearray[ROWS-decrement][Column-1] == Player2){ 
     decrement++;     
 } 
-
+// Llenar el espacio vacio
 Gamearray[ROWS-decrement][Column-1] = Player; 
 
 } 
-
+// Input: El valor de los dos jugadores, 'X' y 'O'
+// Alterna el turno entre los jugadores
 void PlayerInTurn(string Player1, string Player2){ 
 
     static int number = 0; 
@@ -200,6 +204,7 @@ void PlayerInTurn(string Player1, string Player2){
     number++;
 } 
 
+// El arreglo de el juego, la cantidad de filas y co
 bool CheckColumnFull(string Gamearray[][COLS], int ROWS, int Column){ 
 
 bool Lleno; 
